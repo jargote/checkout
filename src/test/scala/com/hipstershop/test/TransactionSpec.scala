@@ -15,19 +15,19 @@ class TransactionSpec extends Specification {
       new MainTestScope {
         transactionB.getTotal must beCloseTo(1.7 within 2.significantFigures)
 
-        Transaction(cart = Map((apple -> 3), (orange -> 4)),
+        Transaction(shoppingCart = Map((apple -> 3), (orange -> 4)),
           offers = hipsterShop.offers).getTotal must beCloseTo(
           1.95 within 2.significantFigures)
 
-        Transaction(cart = Map((apple -> 4), (orange -> 2)),
+        Transaction(shoppingCart = Map((apple -> 4), (orange -> 2)),
           offers = hipsterShop.offers).getTotal must beCloseTo(
             1.7 within 2.significantFigures)
 
-        Transaction(cart = Map((apple -> 8)),
+        Transaction(shoppingCart = Map((apple -> 8)),
           offers = hipsterShop.offers).getTotal must beCloseTo(
             2.4 within 2.significantFigures)
 
-        Transaction(cart = Map((orange -> 9)),
+        Transaction(shoppingCart = Map((orange -> 9)),
           offers = hipsterShop.offers).getTotal must beCloseTo(
             1.5 within 2.significantFigures)
       }
