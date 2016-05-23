@@ -8,11 +8,13 @@ class ShopSpec extends Specification {
       hipsterShop.addOffer(offerA).offers must contain(offerA)
     }
 
-    "addTransaction method" should {
-      "add a new transaction" in new MainTestScope {
-        hipsterShop.addTransaction(
-          transactionA).transactions must contain(transactionA)
-      }
+  }
+
+  "addTransaction method" should {
+    "add a new transaction" in new MainTestScope {
+      hipsterShop.addTransaction(
+        transactionA).transactions must contain(transactionA)
+    }
 
       "update cash total" in new MainTestScope {
         hipsterShop.addTransaction(
@@ -20,4 +22,5 @@ class ShopSpec extends Specification {
       }
     }
   }
+
 }
