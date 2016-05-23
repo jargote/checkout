@@ -16,11 +16,21 @@ class ShopSpec extends Specification {
         transactionA).transactions must contain(transactionA)
     }
 
-      "update cash total" in new MainTestScope {
-        hipsterShop.addTransaction(
-          transactionA).cashTotal must equalTo(0.85)
-      }
+    "update cash total" in new MainTestScope {
+      hipsterShop.addTransaction(
+        transactionA).cashTotal must equalTo(0.85)
     }
   }
 
+  "updateStock" should {
+    "increase stock" in new MainTestScope {
+      hipsterShop.updateStock(apple, 10, _ + _)
+        .stockgtOrElse("apple", (apple, 0)) must equalTo((apple, 60))
+    }
+
+    "decrease stock" in new MainTestScope {
+      hipsterShop.updateStock(apple, 10, _ - _)
+        .stock.getOrElse("apple", (apple, 0)) must equalTo((apple, 40))
+    }
+  }
 }
