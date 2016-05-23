@@ -11,4 +11,13 @@ case class Shop(name: String, offers: List[Offer] = List(),
                 transactions: List[Transaction] = List(),
                 stock: Map[String, (Product, Int)] = Map(),
                 cashTotal: Double = 0.0) {
+
+  /**
+   * Adds an offer to the shop
+   *
+   * @param offer, Products offer.
+   * @return An Immutable Shop object
+   */
+  def addOffer(offer: Offer): Shop = this.copy(offers = offer :: offers)
+  
 }
