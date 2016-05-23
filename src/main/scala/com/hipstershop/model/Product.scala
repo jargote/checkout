@@ -1,7 +1,7 @@
 package com.hipstershop.model
 
 /**
- * This class represents a stock Product.
+ * This class represents a stock-able Product.
  *
  * @param name, product name.
  * @param price, product price.
