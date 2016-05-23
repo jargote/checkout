@@ -41,7 +41,12 @@ case class Shop(name: String, offers: List[Offer] = List(),
    */
   def updateStock(product: Product, quantity: Int,
                   op: (Int, Int) => Int): Shop = {
-    this.copy(stock = stock.updated(product.name,
-      (product, op(stock.getOrElse(product.name, (product, 0))._2, quantity))))
+    val (_, oldStock: Int) = stock.getOrElse(
+      product.name, (product, 0))
+    val newStock: Int = op(oldStock, quantity)
+
+    if (newStock >= 0)
+      this.copy(stock = stock.updated(product.name, (product, newStock)))
+    else this
   }
 }
