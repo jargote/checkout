@@ -19,5 +19,15 @@ case class Shop(name: String, offers: List[Offer] = List(),
    * @return An Immutable Shop object
    */
   def addOffer(offer: Offer): Shop = this.copy(offers = offer :: offers)
-  
+
+
+  /**
+   * Adds a new transaction to the shop.
+   * @param transaction
+   * @return
+   */
+  def addTransaction(transaction: Transaction): Shop = this.copy(
+    transactions = transaction :: transactions,
+    cashTotal = cashTotal + transaction.getTotal)
+
 }
