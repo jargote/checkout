@@ -25,12 +25,15 @@ class ShopSpec extends Specification {
   "updateStock" should {
     "increase stock" in new MainTestScope {
       hipsterShop.updateStock(apple, 10, _ + _)
-        .stockgtOrElse("apple", (apple, 0)) must equalTo((apple, 60))
+        .stock.getOrElse("apple", (apple, 0)) must equalTo((apple, 60))
     }
 
     "decrease stock" in new MainTestScope {
       hipsterShop.updateStock(apple, 10, _ - _)
         .stock.getOrElse("apple", (apple, 0)) must equalTo((apple, 40))
+
+      hipsterShop.updateStock(apple, 100, _ - _)
+        .stock.getOrElse("apple", (apple, 0)) must equalTo((apple, 50))
     }
   }
 }
